@@ -235,13 +235,13 @@ const homeHTML = `<!DOCTYPE html>
         <th>Data</th>
     </tr>
     </thead>
-    <tr id="xsec_webspy">
+    <tr id="zSec_webspy">
             {{ .Data }}
     </tr>
 </table>
         <script type="text/javascript">
             (function() {
-                var data = document.getElementById("xsec_webspy");
+                var data = document.getElementById("zSec_webspy");
 				function appendData(item){
 				var doScroll = data.scrollTop > data.scrollHeight - data.clientHeight - 1;
 					data.appendChild(item);

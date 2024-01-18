@@ -22,7 +22,7 @@ func init() {
 		misc.Log.Panicln(err)
 	}
 
-	DeviceName = Cfg.Section("").Key("DEVICE_NAME").MustString("eth0")
+	DeviceName = Cfg.Section("").Key("DEVICE_NAME").MustString("en0")
 	DebugMode = Cfg.Section("").Key("DEBUG_MODE").MustBool(false)
 	FilterRule = Cfg.Section("").Key("FILTER_RULE").MustString("tcp or (udp and dst port 53)")
 

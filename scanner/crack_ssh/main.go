@@ -23,7 +23,7 @@ func ScanSSH(ip string, port int, timeout time.Duration, service, username, pass
 	if err == nil {
 		defer client.Close()
 		session, err := client.NewSession()
-		errRet := session.Run("echo xsec")
+		errRet := session.Run("echo zSec")
 		if err == nil && errRet == nil {
 			defer session.Close()
 			result = true
