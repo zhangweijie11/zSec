@@ -18,12 +18,14 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.3
+	github.com/toolkits/slice v0.0.0-20141116085117-e44a80af2484
 	github.com/urfave/cli v1.22.14
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
 	go.mongodb.org/mongo-driver v1.13.1
 	golang.org/x/crypto v0.14.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/macaron.v1 v1.5.0
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (
