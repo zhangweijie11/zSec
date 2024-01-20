@@ -29,7 +29,7 @@ type (
 func processConnection(srcConn net.Conn, targetAddr string) {
 	destConn, err := net.DialTimeout("tcp", targetAddr, 3*time.Second)
 	if err != nil {
-		logger.Log.Errorf("Unable to connect to %s, %v\n", targetAddr, err)
+		logger.Log.Errorf("无法连接到后端地址： %s, 错误：%v\n", targetAddr, err)
 		_ = srcConn.Close()
 		return
 	}
@@ -50,7 +50,7 @@ func processConnection(srcConn net.Conn, targetAddr string) {
 func passThrough(srcConn net.Conn, destConn net.Conn, proxyFlag bool) error {
 	remoteIp := GetRemoteIP(srcConn)
 	BytesIntIp := IntToBytes(IP2Uint(net.ParseIP(remoteIp)))
-
+	logger.Log.Infof("remoteIp: %v, bytesIntIp: %v, proxyFlag: %v", remoteIp, BytesIntIp, proxyFlag)
 	data := make([]byte, 10240)
 	for {
 		n, err := srcConn.Read(data)
@@ -62,7 +62,7 @@ func passThrough(srcConn net.Conn, destConn net.Conn, proxyFlag bool) error {
 		}
 		buffer := data[:n]
 		if proxyFlag {
-			// logger.Log.Infof("remoteIp: %v, bytesIntIp: %v", remoteIp, BytesIntIp)
+			//logger.Log.Infof("remoteIp: %v, bytesIntIp: %v", remoteIp, BytesIntIp)
 			buffer = append(BytesIntIp, buffer...)
 		}
 
@@ -87,11 +87,11 @@ func Proxy() {
 			target := fmt.Sprintf("%v:%v", item.TargetHost, item.TargetPort)
 			listener, err := net.Listen("tcp", fmt.Sprintf(":%v", item.LocalPort))
 			if err != nil {
-				logger.Log.Infof("%v", err)
+				logger.Log.Infof("监听出现问题：%v", err)
 				return
 			}
 
-			logger.Log.Infof("Forward :%v -> %v:%v", item.LocalPort, item.TargetHost, item.TargetPort)
+			logger.Log.Infof("监听本地地址：%v -> 转发后端地址：%v:%v", item.LocalPort, item.TargetHost, item.TargetPort)
 
 			for {
 				conn, err := listener.Accept()
@@ -99,7 +99,7 @@ func Proxy() {
 					logger.Log.Errorf("Accept failed, %v\n", err)
 					break
 				}
-				logger.Log.Infof("%v -> %v -> %v", conn.LocalAddr(), conn.RemoteAddr(), target)
+				logger.Log.Infof("本地地址：%v -> 远程发起请求的地址：%v -> 转发后端地址：%v", conn.LocalAddr(), conn.RemoteAddr(), target)
 				go processConnection(conn, target)
 			}
 		}(item)
