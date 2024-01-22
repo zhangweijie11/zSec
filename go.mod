@@ -10,7 +10,6 @@ require (
 	github.com/go-macaron/cache v0.0.0-20200329073519-53bb48172687
 	github.com/go-macaron/csrf v0.0.0-20200329073418-5d38f39de352
 	github.com/go-macaron/session v1.0.2
-	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-xorm/xorm v0.7.9
 	github.com/google/gopacket v1.1.19
 	github.com/gorilla/websocket v1.5.1
