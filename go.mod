@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/abiosoft/ishell/v2 v2.0.2
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/elazarl/goproxy v0.0.0-20231117061959-7cc037d33fb5
 	github.com/elazarl/goproxy/ext v0.0.0-20231117061959-7cc037d33fb5
 	github.com/fatih/color v1.16.0
@@ -14,7 +15,9 @@ require (
 	github.com/go-macaron/csrf v0.0.0-20200329073418-5d38f39de352
 	github.com/go-macaron/session v1.0.2
 	github.com/go-xorm/xorm v0.7.9
+	github.com/google/cel-go v0.19.0
 	github.com/google/gopacket v1.1.19
+	github.com/gorilla/mux v1.8.1
 	github.com/gorilla/websocket v1.5.1
 	github.com/malfunkt/arpfox v1.0.0
 	github.com/malfunkt/iprange v0.9.0
@@ -32,7 +35,9 @@ require (
 	github.com/urfave/cli v1.22.14
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
 	go.mongodb.org/mongo-driver v1.13.1
-	golang.org/x/crypto v0.17.0
+	golang.org/x/crypto v0.18.0
+	golang.org/x/oauth2 v0.16.0
+	google.golang.org/genproto v0.0.0-20190926190326-7ee9db18f195
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/macaron.v1 v1.5.0
 	gopkg.in/yaml.v2 v2.4.0
@@ -43,6 +48,7 @@ require (
 	github.com/abiosoft/ishell v2.0.0+incompatible // indirect
 	github.com/abiosoft/readline v0.0.0-20180607040430-155bce2042db // indirect
 	github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be // indirect
+	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
@@ -57,7 +63,7 @@ require (
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect
-	github.com/golang/protobuf v1.5.0 // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -82,6 +88,7 @@ require (
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/src-d/go-oniguruma v1.0.0 // indirect
+	github.com/stoewer/go-strcase v1.2.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	github.com/unknwon/com v1.0.1 // indirect
@@ -90,14 +97,15 @@ require (
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d // indirect
 	golang.org/x/arch v0.3.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc // indirect
+	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
-	golang.org/x/sys v0.15.0 // indirect
-	golang.org/x/term v0.15.0 // indirect
+	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/term v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	google.golang.org/genproto v0.0.0-20190926190326-7ee9db18f195 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/grpc v1.24.0 // indirect
-	google.golang.org/protobuf v1.30.0 // indirect
+	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/src-d/go-errors.v1 v1.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
